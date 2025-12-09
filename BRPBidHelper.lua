@@ -385,7 +385,7 @@ local function CreateItemRollFrame()
   frame:SetScript("OnDragStop", function () frame:StopMovingOrSizing() end)
   CreateCloseButton(frame)
   CreateInputFrame(frame)
-  CreateActionButtonNaxx(frame, "ALL IN NAXX", "Bid ALL IN NAXX DKP", 1)
+  CreateActionButtonNaxx(frame, "ALL IN", "BCE HA KRACHOE!!!", 1)
 --  CreateActionButtonKara(frame, "ALL IN KARA", "Bid ALL IN KARA DKP", 2)
   frame:Hide()
 
