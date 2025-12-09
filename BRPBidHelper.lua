@@ -19,9 +19,9 @@
 }
 
 StaticPopupDialogs["CONFIRM_ALL_IN_NAXX"] = {
-  text = "Are you sure ebashish NAXX DKP?",
+  text = "Tochno All In?",
   button1 = "Yes",
-  button2 = "Ne Ne Ne",
+  button2 = "Ne, peredumal",
   OnAccept = function()
       SendChatMessage(state.naxx, "WHISPER", nil, state.masterLooter)
   end,
@@ -31,18 +31,18 @@ StaticPopupDialogs["CONFIRM_ALL_IN_NAXX"] = {
   preferredIndex = 3, -- Use a high number to avoid conflicts
 }
 
-StaticPopupDialogs["CONFIRM_ALL_IN_KARA"] = {
-  text = "Are you sure ebashish KARA DKP?",
-  button1 = "Yes",
-  button2 = "Ne Ne Ne",
-  OnAccept = function()
-      SendChatMessage(state.kara, "WHISPER", nil, state.masterLooter)
-  end,
-  timeout = 0,
-  whileDead = true,
-  hideOnEscape = true,
-  preferredIndex = 3, -- Use a high number to avoid conflicts
-}
+--StaticPopupDialogs["CONFIRM_ALL_IN_KARA"] = {
+--  text = "Eto DKP skeduyushego",
+--  button1 = "Yes",
+--  button2 = "Ne Ne Ne",
+--  OnAccept = function()
+--      SendChatMessage(state.kara, "WHISPER", nil, state.masterLooter)
+--  end,
+--  timeout = 0,
+--  whileDead = true,
+--  hideOnEscape = true,
+--  preferredIndex = 3, -- Use a high number to avoid conflicts
+--}
 
 local BUTTON_WIDTH = 120
 local BUTTON_HEIGHT = 32
@@ -317,52 +317,52 @@ local function CreateInputFrame(frame)
   end)
 end
 
-local function CreateActionButtonKara(frame, buttonText, tooltipText, index)
-  local panelWidth = frame:GetWidth()
-  local spacing = (panelWidth - (BUTTON_COUNT * BUTTON_WIDTH)) / (BUTTON_COUNT + 1)
-  local button = CreateFrame("Button", nil, frame, "GameMenuButtonTemplate")
-  button:SetWidth(BUTTON_WIDTH)
-  button:SetHeight(BUTTON_HEIGHT)
-  button:SetPoint("BOTTOMLEFT", frame, "BOTTOMLEFT", index*spacing + (index-1)*BUTTON_WIDTH, BUTTON_PADING)
+--local function CreateActionButtonKara(frame, buttonText, tooltipText, index)
+--  local panelWidth = frame:GetWidth()
+--  local spacing = (panelWidth - (BUTTON_COUNT * BUTTON_WIDTH)) / (BUTTON_COUNT + 1)
+--  local button = CreateFrame("Button", nil, frame, "GameMenuButtonTemplate")
+--  button:SetWidth(BUTTON_WIDTH)
+--  button:SetHeight(BUTTON_HEIGHT)
+--  button:SetPoint("BOTTOMLEFT", frame, "BOTTOMLEFT", index*spacing + (index-1)*BUTTON_WIDTH, BUTTON_PADING)
 
   -- Set button text
-  button:SetText(buttonText)
-  local font = button:GetFontString()
-  font:SetFont(FONT_NAME, FONT_SIZE, FONT_OUTLINE)
+--  button:SetText(buttonText)
+--  local font = button:GetFontString()
+--  font:SetFont(FONT_NAME, FONT_SIZE, FONT_OUTLINE)
 
   -- Add background 
-  local bg = button:CreateTexture(nil, "BACKGROUND")
+--  local bg = button:CreateTexture(nil, "BACKGROUND")
   -- bg:SetAllPoints(button)
   -- bg:SetTexture(1, 1, 1, 1) -- White texture
   -- bg:SetVertexColor(0.2, 0.2, 0.2, 1) -- Dark gray background
 
-  button:SetScript("OnMouseDown", function(self)
-      bg:SetVertexColor(0.6, 0.6, 0.6, 1) -- Even lighter gray when pressed
-  end)
+--  button:SetScript("OnMouseDown", function(self)
+--      bg:SetVertexColor(0.6, 0.6, 0.6, 1) -- Even lighter gray when pressed
+--  end)
 
-  button:SetScript("OnMouseUp", function(self)
-      bg:SetVertexColor(0.4, 0.4, 0.4, 1) -- Lighter gray on release
-  end)
+--  button:SetScript("OnMouseUp", function(self)
+ --     bg:SetVertexColor(0.4, 0.4, 0.4, 1) -- Lighter gray on release
+--  end)
 
   -- Add tooltip
-  button:SetScript("OnEnter", function(self)
-      GameTooltip:SetOwner(button, "ANCHOR_RIGHT")
-      GameTooltip:SetText(tooltipText, nil, nil, nil, nil, true)
-      bg:SetVertexColor(0.4, 0.4, 0.4, 1) -- Lighter gray on hover
-      GameTooltip:Show()
-  end)
+--  button:SetScript("OnEnter", function(self)
+--      GameTooltip:SetOwner(button, "ANCHOR_RIGHT")
+--      GameTooltip:SetText(tooltipText, nil, nil, nil, nil, true)
+--      bg:SetVertexColor(0.4, 0.4, 0.4, 1) -- Lighter gray on hover
+--      GameTooltip:Show()
+--  end)
 
-  button:SetScript("OnLeave", function(self)
-      bg:SetVertexColor(0.2, 0.2, 0.2, 1) -- Dark gray when not hovered
-      GameTooltip:Hide()
-  end)
+--  button:SetScript("OnLeave", function(self)
+--      bg:SetVertexColor(0.2, 0.2, 0.2, 1) -- Dark gray when not hovered
+--      GameTooltip:Hide()
+--  end)
 
   -- Add functionality to the button
-  button:SetScript("OnClick", function()
+--  button:SetScript("OnClick", function()
     -- SendChatMessage(state.kara, "WHISPER", nil, state.masterLooter);
-    StaticPopup_Show("CONFIRM_ALL_IN_KARA")
-  end)
-end
+--    StaticPopup_Show("CONFIRM_ALL_IN_KARA")
+--  end)
+--end
 
 local function CreateItemRollFrame()
   local frame = CreateFrame("Frame", "ItemRollFrame", UIParent)
@@ -386,7 +386,7 @@ local function CreateItemRollFrame()
   CreateCloseButton(frame)
   CreateInputFrame(frame)
   CreateActionButtonNaxx(frame, "ALL IN NAXX", "Bid ALL IN NAXX DKP", 1)
-  CreateActionButtonKara(frame, "ALL IN KARA", "Bid ALL IN KARA DKP", 2)
+--  CreateActionButtonKara(frame, "ALL IN KARA", "Bid ALL IN KARA DKP", 2)
   frame:Hide()
 
   return frame
@@ -536,8 +536,8 @@ local function UpdateTextArea(frame)
   state.kara = gp
   
   text = text .. "Your Rank: " .. bidderRank .. "\n"
-  text = text .. "Your NAXX DKP: " .. ep .. "\n"
-  text = text .. "Your KARA DKP: " .. gp
+  text = text .. "Tekushee DKP: " .. ep .. "\n"
+  text = text .. "Next Raid DKP: " .. gp
 
   -- local colored_msg = ""
   -- local count = 0
